@@ -32,7 +32,19 @@ class PromosDetail extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Text(listElement.shopDescription!, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600), )
+            Text(listElement.shopDescription!, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600), ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Divider(thickness: 2,),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(listElement.shop!, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600), ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Divider(thickness: 2,),
           ],
         ),
       ),
