@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../models/promos_model/promos_model.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-
 import 'image.dart';
 
 class PromosDetail extends StatelessWidget {
@@ -24,7 +22,7 @@ class PromosDetail extends StatelessWidget {
               imageUrl: 'https://bonus.andreyp.ru/${listElement.imgFull}'),
             _hSizebox(20),
             _shopDescription(listElement.shopDescription!),
-            _hSizebox(1020),
+            _hSizebox(10),
             const Divider(
               thickness: 2,
             ),
