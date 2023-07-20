@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../../models/promos_model/promos_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+import 'image.dart';
+
 class PromosDetail extends StatelessWidget {
   const PromosDetail({Key? key, required this.listElement}) : super(key: key);
   final ListElement listElement;
@@ -14,40 +16,55 @@ class PromosDetail extends StatelessWidget {
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            Text(listElement.name!,
-                style: const TextStyle(color: Colors.indigoAccent, fontSize: 30, fontWeight: FontWeight.w900)),
-            const SizedBox(
-              height: 20,
+            _name(listElement.name!),
+            _hSizebox(20),
+            _description(listElement.description!),
+            _hSizebox(20),
+            CustomCachedNetworkImage(
+              imageUrl: 'https://bonus.andreyp.ru/${listElement.imgFull}'),
+            _hSizebox(20),
+            _shopDescription(listElement.shopDescription!),
+            _hSizebox(1020),
+            const Divider(
+              thickness: 2,
             ),
-            Text(listElement.description!,
-                textAlign: TextAlign.center, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w400)),
-            const SizedBox(
-              height: 20,
+            _hSizebox(10),
+            _shop(listElement.shop!),
+            _hSizebox(21),
+            const Divider(
+              thickness: 2,
             ),
-            CachedNetworkImage(
-              imageUrl: 'https://bonus.andreyp.ru/${listElement.imgFull}',
-              placeholder: (context, url) => const CircularProgressIndicator(),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(listElement.shopDescription!, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600), ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Divider(thickness: 2,),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(listElement.shop!, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600), ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Divider(thickness: 2,),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _hSizebox(double height) {
+    return SizedBox(
+      height: height,
+    );
+  }
+
+  Widget _name(String data) {
+    return Text(listElement.name!, style: const TextStyle(color: Colors.indigoAccent, fontSize: 30, fontWeight: FontWeight.w900));
+  }
+
+  Widget _description(String data) {
+    return Text(data, textAlign: TextAlign.center, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w400));
+  }
+
+  Widget _shopDescription(String data) {
+    return Text(
+      data,
+      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+    );
+  }
+
+  Widget _shop(String data) {
+    return Text(
+      data,
+      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
     );
   }
 }
